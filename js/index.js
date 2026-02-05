@@ -1,4 +1,18 @@
+const database="pessoas"
 
+function getPessoas(){
+
+  return JSON.parse(localStorage.getItem(database)) ||  []
+
+}
+
+function setPessoas(pessoas){
+
+  localStorage.setItem(database,JSON.stringify(pessoas))
+
+}
+/* proximo passo
+      substituir o acesso ao localstorage nas chamadas*/
 let id
 let pessoa = [
   
