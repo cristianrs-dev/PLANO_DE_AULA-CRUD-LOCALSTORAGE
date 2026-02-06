@@ -47,7 +47,6 @@ let pessoa = [
          }
     }
 
-
 function cadastrar()
 {
   
