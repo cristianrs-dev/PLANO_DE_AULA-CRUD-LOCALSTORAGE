@@ -1,4 +1,4 @@
-const database="pessoas"
+const database="pessoa"
 
 function getPessoas(){
 
@@ -28,11 +28,12 @@ let pessoa = [
   carregarTabela = function()
   {
       let pessoas
-      let pessoaString = this.localStorage.getItem("pessoa")
-      let dados = JSON.parse(pessoaString) 
+    //  let pessoaString = this.localStorage.getItem("pessoa")
+     // let dados = JSON.parse(pessoaString) 
+    // let dados = getPessoas()
       let bodyTable = document.getElementById("bodyTable")
       bodyTable.innerHTML=""
-        pessoas = dados
+        pessoas = getPessoas()
         for(i = 0; i < pessoas.length; i++)
           {
             bodyTable.innerHTML+= `
