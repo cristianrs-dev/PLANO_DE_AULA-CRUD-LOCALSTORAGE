@@ -24,7 +24,6 @@ let pessoa = [
 ]
 
  
-
   carregarTabela = function()
   {
       let pessoas
