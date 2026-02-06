@@ -48,8 +48,6 @@ let pessoa = [
     }
 
 
-
-
 function cadastrar()
 {
   
