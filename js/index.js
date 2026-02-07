@@ -97,27 +97,33 @@ function editar(){
  }
 
 
-function excluir(i){
+function excluir(indice){
   
-  let indice =  i
-  console.log(indice)
   pessoa.splice(indice,1)
   localStorage.setItem("pessoa",JSON.stringify(pessoa))
+
   carregarTabela()
+
 }
 
 function modal(){
-  let modal = document.getElementById("meuModal")
-  modal.style.display='block'
+
+  document.getElementById("meuModal").style.display='block'
+
 }
+
 function fechar(){
-  let modal = document.getElementById("meuModal")
-  modal.style.display='none'
+
+  document.getElementById("meuModal").style.display='none'
+
 }
 
 function backModal(){
+
   let modal = document.getElementById("meuModal")
+
   modal.classList.add("custom-modal-backdrop")
+  
 }
 
 
