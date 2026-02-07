@@ -6,9 +6,9 @@ function getPessoas(){
 
 }
 
-function setPessoas(pessoas){
+function setPessoas(pessoa){
 
-  localStorage.setItem(database,JSON.stringify(pessoas))
+  localStorage.setItem(database,JSON.stringify(pessoa))
 
 }
 /* proximo passo
@@ -50,13 +50,24 @@ let pessoa = [
 function cadastrar()
 {
   
- let firstName = document.getElementById("firstName").value
+/*let firstName = document.getElementById("firstName").value
  let lastName = document.getElementById("lastName").value
  let email = document.getElementById("email").value
+ 
   pessoa.push({nome:firstName,sobrenome:lastName,email:email})
-
+*/
+pessoa.push(
+            {
+              nome:document.getElementById("firstName").value,
+              sobrenome:document.getElementById("lastName").value,
+              email:document.getElementById("email").value
+            }
+          )
+          setPessoas(pessoa)
+          /*
   let pessoaString = JSON.stringify(pessoa)
   localStorage.setItem("pessoa",pessoaString)
+  */
   carregarTabela()
 }
 
