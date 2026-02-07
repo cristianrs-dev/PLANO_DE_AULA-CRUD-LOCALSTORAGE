@@ -1,37 +1,23 @@
-const database="pessoa"
-
+const database="pessoas"
+let indice
 function getPessoas(){
 
   return JSON.parse(localStorage.getItem(database)) ||  []
 
 }
 
-function setPessoas(pessoa){
+function setPessoas(pessoas){
 
-  localStorage.setItem(database,JSON.stringify(pessoa))
+  localStorage.setItem(database,JSON.stringify(pessoas))
 
 }
-/* proximo passo
-      substituir o acesso ao localstorage nas chamadas*/
-let id
-let pessoa = [
-  
-  {
-    nome:"fulano",
-    sobrenome:"silva",
-    email:"fulano@gmail.com",
-  }
-]
 
  
   carregarTabela = function()
   {
-      let pessoas
-    //  let pessoaString = this.localStorage.getItem("pessoa")
-     // let dados = JSON.parse(pessoaString) 
-    // let dados = getPessoas()
-      let bodyTable = document.getElementById("bodyTable")
-      bodyTable.innerHTML=""
+      
+    
+      document.getElementById("bodyTable").innerHTML=""
         pessoas = getPessoas()
         for(i = 0; i < pessoas.length; i++)
           {
@@ -41,7 +27,7 @@ let pessoa = [
               <td>${pessoas[i].nome}</td>
               <td>${pessoas[i].sobrenome}</td>
               <td>${pessoas[i].email}</td>
-              <td><button type="button" data-toggle="modal" data-target="#meuModal" onclick="modal();getIndice(${i});backModal()" class="btn btn-primary">editar</button></td>
+              <td><button type="button" data-toggle="modal" data-target="#meuModal" onclick="modal(${i});backModal()" class="btn btn-primary">editar</button></td>
               <td><button type="button" onclick="excluir(${i})" class="btn btn-danger">Excluir</button></td>
               </tr>`
          }
@@ -50,67 +36,61 @@ let pessoa = [
 function cadastrar()
 {
   
-/*let firstName = document.getElementById("firstName").value
- let lastName = document.getElementById("lastName").value
- let email = document.getElementById("email").value
- 
-  pessoa.push({nome:firstName,sobrenome:lastName,email:email})
-*/
-pessoa.push(
+ pessoas = getPessoas()
+
+pessoas.push(
             {
               nome:document.getElementById("firstName").value,
               sobrenome:document.getElementById("lastName").value,
               email:document.getElementById("email").value
             }
           )
-          setPessoas(pessoa)
-          /*
-  let pessoaString = JSON.stringify(pessoa)
-  localStorage.setItem("pessoa",pessoaString)
-  */
+          setPessoas(pessoas)
+  limparCampos()
+  alert("cadastro salvo com sucesso!")
   carregarTabela()
+
 }
 
 
-function getIndice(i){
- id = i
+function modal(id){
+  indice = id
+  let pessoas = getPessoas()
+  document.getElementById("meuModal").style.display='block'
+  document.getElementById("modalNome").value = pessoas[id].nome
+  document.getElementById("modalSobrenome").value = pessoas[id].sobrenome
+  document.getElementById("modalEmail").value = pessoas[id].email
+  
 }
 
+function confirmar(){
 
-
-function editar(){
-   let nome = document.getElementById("modalNome").value
-   let sobrenome = document.getElementById("modalSobrenome").value
-   let email = document.getElementById("modalEmail").value
+ let pessoas = getPessoas()
  
-  console.log(nome)
-   console.log(sobrenome)
-   console.log(email)
-   
-   pessoa[id].nome = nome
-   pessoa[id].sobrenome = sobrenome
-   pessoa[id].email = email
-   localStorage.setItem("pessoa",JSON.stringify(pessoa))
+  pessoas[indice]={
+      nome: document.getElementById("modalNome").value,
+      sobrenome:document.getElementById("modalSobrenome").value, 
+     email: document.getElementById("modalEmail").value
+  }
 
-   fechar()
-   carregarTabela()
+  setPessoas(pessoas)
+  alert("registro atualizado com sucesso!")
+  carregarTabela()
+  fechar()
+
  }
 
 
 function excluir(indice){
-  
-  pessoa.splice(indice,1)
-  localStorage.setItem("pessoa",JSON.stringify(pessoa))
-
+  let pessoas = getPessoas()
+  pessoas.splice(indice,1)
+  setPessoas(pessoas)
+  alert("registro excluído com sucesso!")
   carregarTabela()
 
 }
 
-function modal(){
 
-  document.getElementById("meuModal").style.display='block'
-
-}
 
 function fechar(){
 
@@ -120,12 +100,15 @@ function fechar(){
 
 function backModal(){
 
-  let modal = document.getElementById("meuModal")
-
-  modal.classList.add("custom-modal-backdrop")
+  document.getElementById("meuModal").classList.add("custom-modal-backdrop")
   
 }
 
+function limparCampos(){
+   document.getElementById("firstName").value=""
+   document.getElementById("lastName").value=""
+    document.getElementById("email").value=""
+}
 
 
 window.onload= carregarTabela
