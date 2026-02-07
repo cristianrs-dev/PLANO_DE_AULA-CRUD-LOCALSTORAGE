@@ -13,10 +13,10 @@ function setPessoas(pessoa){
 }
 /* proximo passo
       substituir o acesso ao localstorage nas chamadas*/
-let id
 let pessoa = [
   
   {
+    id:0,
     nome:"fulano",
     sobrenome:"silva",
     email:"fulano@gmail.com",
@@ -41,7 +41,7 @@ let pessoa = [
               <td>${pessoas[i].nome}</td>
               <td>${pessoas[i].sobrenome}</td>
               <td>${pessoas[i].email}</td>
-              <td><button type="button" data-toggle="modal" data-target="#meuModal" onclick="modal();getIndice(${i});backModal()" class="btn btn-primary">editar</button></td>
+              <td><button type="button" data-toggle="modal" data-target="#meuModal" onclick="modal(${i})" class="btn btn-primary">editar</button></td>
               <td><button type="button" onclick="excluir(${i})" class="btn btn-danger">Excluir</button></td>
               </tr>`
          }
@@ -72,28 +72,17 @@ pessoa.push(
 }
 
 
-function getIndice(i){
- id = i
-}
-
-
-
-function editar(){
-   let nome = document.getElementById("modalNome").value
-   let sobrenome = document.getElementById("modalSobrenome").value
-   let email = document.getElementById("modalEmail").value
+function editar(id){
  
-  console.log(nome)
-   console.log(sobrenome)
-   console.log(email)
-   
-   pessoa[id].nome = nome
-   pessoa[id].sobrenome = sobrenome
-   pessoa[id].email = email
-   localStorage.setItem("pessoa",JSON.stringify(pessoa))
+  pessoa.findIndex()
 
-   fechar()
-   carregarTabela()
+ pessoa[id].nome= document.getElementById("modalNome").value
+ pessoa[id].sobrenome= document.getElementById("modalSobrenome").value
+ pessoa[id].email =  document.getElementById("modalEmail").value
+ console.log(document.getElementById("modalNome").value)
+     setPessoas(pessoa)
+// fechar()
+ //carregarTabela()
  }
 
 
@@ -106,10 +95,15 @@ function excluir(indice){
 
 }
 
-function modal(){
+function modal(id){
 
   document.getElementById("meuModal").style.display='block'
-
+  document.getElementById("modalNome").value = pessoa[id].nome
+  document.getElementById("modalSobrenome").value = pessoa[id].sobrenome
+  document.getElementById("modalEmail").value = pessoa[id].email
+  
+  editar(id)
+ 
 }
 
 function fechar(){
