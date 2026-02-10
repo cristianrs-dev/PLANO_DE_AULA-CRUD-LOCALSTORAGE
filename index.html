@@ -13,20 +13,20 @@
 </style>
 <body class="container col-7" id="body-form">
     <div class="row max-auto d-flex justify-content-center">
-        <form class=" card col-4 mt-5 mb-5 p-2 ">
+        <form method="post" class=" card col-4 mt-5 mb-5 p-2 ">
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Nome</label>
-              <input type="text" class="form-control" id="firstName" aria-describedby="emailHelp">
+              <input type="text" class="form-control" id="firstName" aria-describedby="emailHelp" required>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Sobrenome</label>
-              <input type="text" class="form-control" id="lastName">
+              <input type="text" class="form-control" id="lastName" required>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">E-mail</label>
-                <input type="email" class="form-control" id="email">
+                <input type="email" class="form-control" id="email" required>
             </div>
-            <button type="button" class="btn col align-self-start btn-primary" data-toggle="modal" data-target="#meuModal" onclick="cadastrar()">Cadastrar</button>
+            <button type="submit" class="btn col align-self-start btn-primary" id="bntCadastrar" data-toggle="modal" data-target="#meuModal">Cadastrar</button>
         </form>
     </div>
 
