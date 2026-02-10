@@ -49,7 +49,7 @@ pessoas.push(
   limparCampos()
   alert("cadastro salvo com sucesso!")
   carregarTabela()
-
+        
 }
 
 
@@ -110,5 +110,8 @@ function limparCampos(){
     document.getElementById("email").value=""
 }
 
+
+
+document.getElementById("btnCadastrar").addEventListener("click",cadastrar)
 
 window.onload= carregarTabela
