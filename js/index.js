@@ -12,7 +12,6 @@ function setPessoas(pessoas){
 
 }
 
- 
   carregarTabela = function()
   {
       
@@ -90,8 +89,6 @@ function excluir(indice){
 
 }
 
-
-
 function fechar(){
 
   document.getElementById("meuModal").style.display='none'
@@ -109,8 +106,6 @@ function limparCampos(){
    document.getElementById("lastName").value=""
     document.getElementById("email").value=""
 }
-
-
 
 document.getElementById("btnCadastrar").addEventListener("click",cadastrar)
 
