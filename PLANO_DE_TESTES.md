@@ -143,57 +143,57 @@ Este plano de testes tem como objetivo validar o correto funcionamento das opera
 **Exemplo:**
 ```js
 localStorage.setItem("dados", "valor_invalido");
-
+```
 ---
 
 ### CT-10 – Validação de tipo de dados (texto)
 
-Objetivo: Garantir que campos de texto não aceitem valores inválidos (números ou caracteres indevidos).
+**Objetivo:** Garantir que campos de texto não aceitem valores inválidos (números ou caracteres indevidos).
 
-Passos:
+**Passos:**
 
-Inserir números em campo de nome (ex: 12345)
+1. Inserir números em campo de nome (ex: 12345)
 
-Clicar em salvar
+2. Clicar em salvar
 
-Resultado esperado:
+**Resultado esperado:**
 
-Sistema exibe erro de validação
+- Sistema exibe erro de validação
 
-Registro não é salvo
+- Registro não é salvo
 
 ---
 
 ### CT-11 – Validação de formato de e-mail
 
-Objetivo: Garantir que o campo email tenha formato válido.
+**Objetivo:** Garantir que o campo email tenha formato válido.
 
-Passos:
+**Passos:**
 
-Inserir email_invalido.com
+1. Inserir email_invalido.com
 
-Clicar em salvar
+2. Clicar em salvar
 
-Resultado esperado:
+**Resultado esperado:**
 
-Sistema exibe mensagem: “Email inválido”
+- Sistema exibe mensagem: “Email inválido”
 
-Registro não salvo
+- Registro não salvo
 
 ---
 
 ### CT-12 – Limite de caracteres
 
-Objetivo: Validar tamanho mínimo e máximo dos campos.
+**Objetivo:** Validar tamanho mínimo e máximo dos campos.
 
-Passos:
+**Passos:**
 
-Inserir texto acima do limite permitido
+1. Inserir texto acima do limite permitido
 
-Salvar
+2. Salvar
 
-Resultado esperado:
+**Resultado esperado:**
 
-Sistema bloqueia o envio
+- Sistema bloqueia o envio
 
-Mensagem informando limite de caracteres
+- Mensagem informando limite de caracteres
