@@ -1,4 +1,6 @@
+
 const database="pessoas"
+
 let indice
 function getPessoas(){
 
@@ -12,13 +14,13 @@ function setPessoas(pessoas){
 
 }
 
-  carregarTabela = function()
+  function carregarTabela ()
   {
       
     
       document.getElementById("bodyTable").innerHTML=""
-        pessoas = getPessoas()
-        for(i = 0; i < pessoas.length; i++)
+      let  pessoas = getPessoas()
+        for(let i = 0; i < pessoas.length; i++)
           {
             bodyTable.innerHTML+= `
               <tr>
@@ -35,7 +37,7 @@ function setPessoas(pessoas){
 function cadastrar()
 {
   
- pessoas = getPessoas()
+let pessoas = getPessoas()
 
 pessoas.push(
             {
@@ -44,9 +46,13 @@ pessoas.push(
               email:document.getElementById("email").value
             }
           )
-          setPessoas(pessoas)
+          
+            setPessoas(pessoas)
+          
+          
   limparCampos()
   alert("cadastro salvo com sucesso!")
+  
   carregarTabela()
         
 }
@@ -64,7 +70,7 @@ function modal(id){
 
 function confirmar(){
 
- let pessoas = getPessoas()
+let  pessoas = getPessoas()
  
   pessoas[indice]={
       nome: document.getElementById("modalNome").value,
@@ -81,7 +87,7 @@ function confirmar(){
 
 
 function excluir(indice){
-  let pessoas = getPessoas()
+ let  pessoas = getPessoas()
   pessoas.splice(indice,1)
   setPessoas(pessoas)
   alert("registro excluído com sucesso!")
@@ -106,6 +112,14 @@ function limparCampos(){
    document.getElementById("lastName").value=""
     document.getElementById("email").value=""
 }
+
+
+  document.querySelectorAll(".somenteLetras").forEach(inputs=>{
+  inputs.addEventListener("input",function(){
+   inputs.value =  inputs.value.replace(/[^A-Za-zÀ-ÿ\s]/g,"")   
+    })
+  })
+
 
 document.getElementById("btnCadastrar").addEventListener("click",cadastrar)
 
